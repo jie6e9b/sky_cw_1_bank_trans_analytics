@@ -1,0 +1,52 @@
+[tool.poetry]
+name = "sky-cw-1-bank-trans-analytics"
+version = "0.1.0"
+description = "Banking transaction analysis application"
+authors = [
+    "Vladimir Lebedev <lvv1985@gmail.com>"
+]
+license = "MIT"
+readme = "README.md"
+requires-python = ">=3.9"
+
+[tool.poetry.dependencies]
+pandas = ">=2.2.3,<3.0.0"
+
+[tool.poetry.group.dev.dependencies]
+isort = "^6.0.1"
+black = "^25.1.0"
+flake8 = "^7.2.0"
+pytest = "^8.3.5"
+pytest-cov = "^6.1.1"
+mypy = "^1.15.0"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 119
+target-version = ['py39']
+skip-string-normalization = false
+exclude = '''
+/(
+    \.git
+)/
+'''
+
+[tool.isort]
+profile = "black"
+line_length = 119
+include_trailing_comma = true
+multi_line_output = 3
+skip_gitignore = true
+skip = ["__pycache__"]
+
+[tool.pytest.ini_options]
+addopts = "--cov=sky_cw_1_bank_trans_analytics --cov-report=term-missing"
+testpaths = ["tests"]
+
+[tool.mypy]
+disallow_untyped_defs = true
+warn_return_any = true
+exclude = 'venv'
