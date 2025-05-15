@@ -13,5 +13,6 @@ if __name__ == "__main__":
     result_reports = spending_by_category(df, "Топливо", "01.02.2018")
     print(result_reports)
 
-    result_services = get_high_cashback_categories(df, "2020", "2")
+    result_services = get_high_cashback_categories(df,"2021", "05")
     print(result_services)
+
