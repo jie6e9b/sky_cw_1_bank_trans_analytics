@@ -1,0 +1,12 @@
+# .coveragerc
+[run]
+source = src
+branch = True
+
+[report]
+show_missing = True
+skip_covered = True
+
+[paths]
+source =
+    src
