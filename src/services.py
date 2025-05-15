@@ -1,11 +1,7 @@
 import json
 import logging
 import os
-from datetime import datetime
-from typing import List, Dict
-from src.utils import read_data_file
 import pandas as pd
-
 
 def setup_logger() -> logging.Logger:
     """Настраивает логгер для модуля services."""
@@ -75,8 +71,9 @@ def get_high_cashback_categories(df: pd.DataFrame, year: str, month: str) -> str
         logger.info(f"Сделана выборка транзакций за месяц {month} (год {year}).")
 
         # DataFrame только с расходами (исключая переводы)
-        spent_df = slice_df[(slice_df["Сумма платежа"] < 0) & (slice_df["Категория"] != "Переводы")]
-        spent_df = slice_df[(slice_df["Сумма платежа"] < 0) & (slice_df["Категория"] != "Наличные")]
+        spent_df = slice_df[(slice_df["Сумма платежа"] < 0) &
+                            (slice_df["Категория"] != "Переводы") &
+                            (slice_df["Категория"] != "Наличные")]
 
         if spent_df.empty:
             logger.info(f"Нет расходов за месяц {month} (год {year}).")
